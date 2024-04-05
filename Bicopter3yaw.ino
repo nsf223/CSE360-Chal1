@@ -142,8 +142,8 @@ void loop() {
   // feel free to use the PDterms set from the ground station which are picked up in the paramUpdate function for easy tuning
   float m1 = 0;  // motor 1
   float m2 = 0;  // motor 2
-  float t1 = 0;  // servo 1
-  float t2 = 0;  // servo 2
+  float t1 = 90;  // servo 1
+  float t2 = 90;  // servo 2
 
 
   /******** INSERT YOUR CODE HERE: Use the variable yaw and yawrate for yaw control ******************/
@@ -157,8 +157,8 @@ void loop() {
 
   m1 = sqrt(sq(upForce)+sq(((forwardForce)+(turnForce))/2));
   m2 = sqrt(sq(upForce)+sq(((forwardForce)+(turnForce))/2));
-  t1 = atan((upForce)/((forwardForce)+(turnForce)));
-  t2 = atan((upForce)/((forwardForce)-(turnForce)));
+  t1 = degrees(atan2(upForce,(forwardForce+turnForce)))+0;
+  t2 = degrees(atan2(upForce,(forwardForce+turnForce)))+0;
 
   outputs.params[0] = m1;
   outputs.params[1] = m2;
